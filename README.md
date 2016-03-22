@@ -1,6 +1,6 @@
 # android-sdk-docker
 
-This docker image can be used to build Android Gradle projects with Java 7.
+This docker image can be used to build Android Gradle projects with Java 7. The image is available on [DockerHub](https://hub.docker.com/r/lerk/android/)
 
 Contains:
 
@@ -65,6 +65,10 @@ build:
 ```
 
 ### Without GitLab
+
+```bash
+docker pull lerk/android
+```
 
 Change directory to your project directory, then run:
 
