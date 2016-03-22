@@ -1,6 +1,6 @@
-# android-java7
+# android-sdk-docker
 
-This docker is used to build Android Gradle projects with Java 7.
+This docker image can be used to build Android Gradle projects with Java 7.
 
 Contains:
 
@@ -13,6 +13,7 @@ Contains:
 * Platform tools
 
 I installed the SDK using this filter:
+
 ```
 tools,
 platform-tools,
