@@ -69,6 +69,6 @@ build:
 Change directory to your project directory, then run:
 
 ```bash
-docker run --tty --interactive --volume=$(pwd):/opt/workspace --workdir=/opt/workspace --rm lerk/android:java7  /bin/sh -c "./gradlew build"
+docker run --tty --interactive --volume=$(pwd):/opt/workspace --workdir=/opt/workspace --rm lerk/android  /bin/sh -c "./gradlew build"
 ```
 
