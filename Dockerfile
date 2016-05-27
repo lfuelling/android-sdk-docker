@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 
 MAINTAINER Lukas Fülling "lerk@lerk.io"
 
@@ -21,6 +21,25 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 ADD updateSDK.sh /opt/android-sdk-linux/updateSDK.sh
 RUN chmod +x /opt/android-sdk-linux/updateSDK.sh
 RUN /opt/android-sdk-linux/updateSDK.sh
+
+# Install Gradle
+ENV TERM dumb
+ENV JAVA_OPTS -Xms256m -Xmx512m
+
+# Pre-install gradle for faster builds. You can use the local gradle installation or the wrapper
+# Based on niaquinto/gradle (https://github.com/niaquinto/docker-gradle)
+ENV GRADLE_VERSION 2.10
+ENV GRADLE_HASH 5b8ad24373252dabce9dead708e409f8
+WORKDIR /usr/bin
+RUN wget "https://downloads.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" && \
+    echo "${GRADLE_HASH} gradle-${GRADLE_VERSION}-bin.zip" > gradle-${GRADLE_VERSION}-bin.zip.md5 && \
+    md5sum -c gradle-${GRADLE_VERSION}-bin.zip.md5 && \
+    unzip "gradle-${GRADLE_VERSION}-bin.zip" && \
+    ln -s "gradle-${GRADLE_VERSION}" gradle && \
+    rm "gradle-${GRADLE_VERSION}-bin.zip"
+
+ENV GRADLE_HOME /usr/bin/gradle
+ENV PATH $PATH:$GRADLE_HOME/bin
 
 # Cleaning
 RUN apt-get clean
