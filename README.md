@@ -4,32 +4,7 @@ This docker image can be used to build Android Gradle projects with Java 7. The 
 
 Contains:
 
-* Android SDK: r24.4.1
-* Build tools
-* Android API
-* Support maven repository
-* Google maven repository
-* Arm emulator: v21
-* Platform tools
-
-I installed the SDK using this filter:
-
-```
-tools,
-platform-tools,
-build-tools-23.0.2,
-build-tools-22.0.1,
-android-23,
-android-22,
-android-21,
-sys-img-armeabi-v7a-android-23,
-addon-google_apis-google-23,
-addon-google_apis-google-22,
-extra-android-m2repository,
-extra-android-support
-```
-
-If you need something else, change the `updateSDK.sh` script and rebuild the image.
+* Android SDK: full
 
 ## Build image
 
